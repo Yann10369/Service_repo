@@ -7,13 +7,13 @@ This repository hosts the **AI Smart Photo Album** service. It follows a standar
 ## 📁 项目结构
 
 ```
-Service_repo/  (= AI Smart Photo Album)
+AI-Smart-Photo-Album/
 ├── frontend/           # 前端代码（Web / H5 / 小程序 / 管理后台）
 ├── backend/            # 后端服务（API / 业务逻辑 / 数据处理）
 ├── model/              # 数据模型与机器学习 / 深度学习模型
 ├── docs/               # 项目文档（需求 / 架构 / API / 部署 / 变更日志）
 │   ├── design/         # UI / 接口设计文档
-│   ├── screenshots/    # 设计稿截图
+│   ├── design_ui/      # 设计稿截图
 │   └── 项目3.pdf        # 项目原始需求 PDF
 └── README.md           # 当前文件
 ```
@@ -25,7 +25,7 @@ Service_repo/  (= AI Smart Photo Album)
 | `frontend/`         | 前端代码                                         | [frontend/README.md](./frontend/README.md)               |
 | `backend/`          | 后端服务代码                                     | [backend/README.md](./backend/README.md)                 |
 | `model/`            | 数据结构与 ML / DL 模型                          | [model/README.md](./model/README.md)                     |
-| `docs/`             | 项目相关文档（含 design / screenshots / PDF）   | [docs/README.md](./docs/README.md)                       |
+| `docs/`             | 项目相关文档（含 design / design_ui / PDF）     | [docs/README.md](./docs/README.md)                       |
 | `docs/pr_git.md`    | 智能体技能：自动提交代码并申请 PR                | [docs/pr_git.md](./docs/pr_git.md)                       |
 
 ## 🎯 项目目标
@@ -42,8 +42,8 @@ Service_repo/  (= AI Smart Photo Album)
 
 1. **克隆仓库**
    ```bash
-   git clone https://github.com/Yann10369/Service_repo.git
-   cd Service_repo
+   git clone https://github.com/Yann10369/AI-Smart-Photo-Album.git
+   cd AI-Smart-Photo-Album
    ```
 
 2. **按需进入子目录**
