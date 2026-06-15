@@ -76,10 +76,11 @@ git commit -m "<type>(<module>): <subject>
 <body: 改动目的 / 影响范围 / 关联 issue>
 
 模块: <module>
-负责人: <user-name>
-
-Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>"
+负责人: <user-name>"
 ```
+
+> ⚠️ **不要**在 commit message 中添加 `Co-Authored-By: Claude ...` 之类的 AI 署名 trailer。  
+> 所有提交以当前 git 用户（`<user-name>`）单独作者身份提交。
 
 提交信息格式（Conventional Commits + 模块前缀）：
 
@@ -197,6 +198,9 @@ PR body 模板：
 ## 关联 Issue
 Closes #<id>  （如有）
 ```
+
+> ⚠️ PR body 中**不要**添加 AI 工具署名（如 `🤖 Generated with Claude Code`）。  
+> 所有 PR 以提交人本人身份创建。
 
 ### Step 6. 回报
 
