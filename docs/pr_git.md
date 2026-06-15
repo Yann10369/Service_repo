@@ -108,7 +108,59 @@ git push origin <current-branch>
 
 ### Step 5. 创建 Pull Request
 
-仅在非默认分支（或用户明确要求）执行：
+仅在非默认分支（或用户明确要求）执行。
+
+**默认使用 GitHub REST API**（不依赖 `gh` CLI，适用于任何干净环境）：
+
+1. **获取 token**：从 git credential manager 读取已保存的 GitHub 凭证：
+
+   ```bash
+   git credential fill <<< "url=https://github.com/<owner>/<repo>.git"
+   ```
+
+   输出中 `password=` 后面的值即为 token（`gho_` / `ghp_` / `ghs_` 开头）。
+
+2. **构造 JSON payload**（用 Python 安全转义 body 中的换行与引号）：
+
+   ```bash
+   BODY='<按下方模板填写>'
+   PAYLOAD=$(python -c "import json,sys; print(json.dumps({
+     'title': '<type>(<module>): <short title>',
+     'head': '<current-branch>',
+     'base': 'main',
+     'body': sys.argv[1]
+   }))" "$BODY")
+   ```
+
+3. **POST 创建 PR**：
+
+   ```bash
+   curl -s -X POST \
+     -H "Authorization: token <TOKEN>" \
+     -H "Accept: application/vnd.github+json" \
+     -H "X-GitHub-Api-Version: 2022-11-28" \
+     -H "Content-Type: application/json" \
+     -d "$PAYLOAD" \
+     https://api.github.com/repos/<owner>/<repo>/pulls
+   ```
+
+4. **解析响应**：返回 JSON 中 `html_url` 字段即为 PR 链接，例如：
+
+   ```
+   "html_url": "https://github.com/<owner>/<repo>/pull/1"
+   ```
+
+5. **指定 reviewer**（可选）：创建后追加调用：
+
+   ```bash
+   curl -s -X POST \
+     -H "Authorization: token <TOKEN>" \
+     -H "Accept: application/vnd.github+json" \
+     -d '{"reviewers":["<module-owner-login>"]}' \
+     https://api.github.com/repos/<owner>/<repo>/pulls/<pr-number>/requested_reviewers
+   ```
+
+**可选快捷方式**：若环境已安装 `gh` CLI 且 `gh auth status` 已登录，可直接使用：
 
 ```bash
 gh pr create \

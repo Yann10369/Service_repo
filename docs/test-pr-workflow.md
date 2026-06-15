@@ -4,13 +4,13 @@
 
 ## 验证项
 
-- [x] 模块归属识别（docs）
-- [x] 模块白名单过滤（仅 `docs/` 下文件可提交）
-- [x] 分支命名 `test/pr-workflow-validation`
-- [x] 提交信息格式 `<type>(<module>): <subject>`
-- [x] 仅 `git add docs/<file>`，未使用 `git add . / -A`
-- [x] 按 docs 提交并推送
-- [x] gh pr create 流程
+- [ ] 模块归属识别（docs）
+- [ ] 模块白名单过滤（仅 `docs/` 下文件可提交）
+- [ ] 分支命名 `test/pr-workflow-validation`
+- [ ] 提交信息格式 `<type>(<module>): <subject>`
+- [ ] 仅 `git add docs/<file>`，未使用 `git add . / -A`
+- [ ] 按 docs 提交并推送
+- [ ] 创建 PR（默认走 GitHub REST API，无需 gh CLI）
 
 ## 验证时间
 
